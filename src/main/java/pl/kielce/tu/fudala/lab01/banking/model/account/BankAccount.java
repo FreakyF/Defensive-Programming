@@ -2,7 +2,6 @@ package pl.kielce.tu.fudala.lab01.banking.model.account;
 
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
-import lombok.Data;
 import pl.kielce.tu.fudala.lab01.banking.model.transaction.OperationType;
 import pl.kielce.tu.fudala.lab01.banking.model.transaction.Transaction;
 import pl.kielce.tu.fudala.lab01.banking.validator.email.ValidEmail;
@@ -17,7 +16,6 @@ import java.util.UUID;
 import java.util.concurrent.TimeUnit;
 import java.util.concurrent.locks.ReentrantLock;
 
-@Data
 public class BankAccount implements IBankAccount {
     private final ReentrantLock lock = new ReentrantLock();
     @NotNull
@@ -77,12 +75,12 @@ public class BankAccount implements IBankAccount {
                 throw new IllegalArgumentException("Insufficient funds for transfer.");
             }
             this.balance = this.balance.subtract(amount);
-            addTransaction(OperationType.TRANSFER, amount, "Transfer out to account " + target.accountNumber + ". New" +
-					" balance: " + this.balance);
+            addTransaction(OperationType.TRANSFER, amount,
+                    "Transfer out to account " + target.accountNumber + ". " + "New" + " balance: " + this.balance);
 
             target.balance = target.balance.add(amount);
             target.addTransaction(OperationType.TRANSFER, amount, "Transfer in from account " + this.accountNumber +
-					". New balance: " + target.balance);
+                    ". New balance: " + target.balance);
         } catch (InterruptedException e) {
             Thread.currentThread().interrupt();
             throw new IllegalStateException("Transfer interrupted while waiting for locks.", e);
@@ -99,6 +97,41 @@ public class BankAccount implements IBankAccount {
     @Override
     public List<Transaction> getTransactionHistory() {
         return Collections.unmodifiableList(transactionHistory);
+    }
+
+    @Override
+    public UUID getAccountId() {
+        return accountId;
+    }
+
+    @Override
+    public String getFirstName() {
+        return firstName;
+    }
+
+    @Override
+    public String getLastName() {
+        return lastName;
+    }
+
+    @Override
+    public String getAccountNumber() {
+        return accountNumber;
+    }
+
+    @Override
+    public BigDecimal getBalance() {
+        return balance;
+    }
+
+    @Override
+    public String getPesel() {
+        return pesel;
+    }
+
+    @Override
+    public String getEmail() {
+        return email;
     }
 
     private void validateTargetAccount(IBankAccount targetAccount) {
