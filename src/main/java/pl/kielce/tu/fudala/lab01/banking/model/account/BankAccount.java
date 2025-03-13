@@ -4,6 +4,9 @@ import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 import pl.kielce.tu.fudala.lab01.banking.model.transaction.OperationType;
 import pl.kielce.tu.fudala.lab01.banking.model.transaction.Transaction;
+import pl.kielce.tu.fudala.lab01.banking.validator.email.ValidEmail;
+import pl.kielce.tu.fudala.lab01.banking.validator.iban.ValidIban;
+import pl.kielce.tu.fudala.lab01.banking.validator.pesel.ValidPesel;
 
 import java.math.BigDecimal;
 import java.util.ArrayList;
@@ -23,6 +26,7 @@ public class BankAccount implements IBankAccount {
 	@NotBlank
 	private String lastName;
 
+	@ValidIban
 	@NotBlank
 	private String accountNumber;
 
@@ -31,9 +35,11 @@ public class BankAccount implements IBankAccount {
 
 	private List<Transaction> transactionHistory = new ArrayList<>();
 
+	@ValidPesel
 	@NotBlank
 	private String pesel;
 
+	@ValidEmail
 	@NotBlank
 	private String email;
 
@@ -63,12 +69,7 @@ public class BankAccount implements IBankAccount {
 
 	@Override
 	public void transfer(IBankAccount targetAccount, BigDecimal amount) {
-		if (targetAccount == null) {
-			throw new IllegalArgumentException("Target account must not be null.");
-		}
-		if (this.equals(targetAccount)) {
-			throw new IllegalArgumentException("Cannot transfer funds to the same account.");
-		}
+		validateTargetAccount(targetAccount);
 		validateAmount(amount, OperationType.TRANSFER);
 
 		BankAccount target = castToBankAccount(targetAccount);
@@ -128,6 +129,15 @@ public class BankAccount implements IBankAccount {
 		}
 		if (amount.compareTo(BigDecimal.ZERO) <= 0) {
 			throw new IllegalArgumentException(operationType + " amount must be greater than zero.");
+		}
+	}
+
+	private void validateTargetAccount(IBankAccount targetAccount) {
+		if (targetAccount == null) {
+			throw new IllegalArgumentException("Target account must not be null.");
+		}
+		if (this.equals(targetAccount)) {
+			throw new IllegalArgumentException("Cannot transfer funds to the same account.");
 		}
 	}
 
