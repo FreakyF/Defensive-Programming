@@ -23,7 +23,6 @@ public class JsonMapper implements IJsonMapper {
         }
     }
 
-
     public <T> T fromJson(String json, Class<T> clazz) {
         try {
             return objectMapper.readValue(json, clazz);
