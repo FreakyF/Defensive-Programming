@@ -5,33 +5,36 @@ import jakarta.validation.ConstraintValidatorContext;
 
 public class PeselValidator implements ConstraintValidator<ValidPesel, String> {
 
+    private static final int PESEL_LENGTH = 11;
+    private static final int[] WEIGHT_FACTORS = {1, 3, 7, 9, 1, 3, 7, 9, 1, 3};
+
     @Override
     public boolean isValid(String pesel, ConstraintValidatorContext context) {
         if (pesel == null) {
             return false;
         }
 
-        if (!hasCorrectFormat(pesel)) {
+        final String trimmedPesel = pesel.trim();
+        if (!hasCorrectFormat(trimmedPesel)) {
             return false;
         }
 
-        int expectedCheckDigit = calculateExpectedCheckDigit(pesel);
-        int actualCheckDigit = Character.getNumericValue(pesel.charAt(10));
+        final int expectedCheckDigit = calculateExpectedCheckDigit(trimmedPesel);
+        final int actualCheckDigit = Character.getNumericValue(trimmedPesel.charAt(10));
         return expectedCheckDigit == actualCheckDigit;
     }
 
-    private boolean hasCorrectFormat(String pesel) {
-        return pesel.matches("\\d{11}");
+    private boolean hasCorrectFormat(final String pesel) {
+        return pesel.matches("\\d{" + PESEL_LENGTH + "}");
     }
 
-    private int calculateExpectedCheckDigit(String pesel) {
-        int[] weightFactors = {1, 3, 7, 9, 1, 3, 7, 9, 1, 3};
+    private int calculateExpectedCheckDigit(final String pesel) {
         int weightedSum = 0;
-        for (int i = 0; i < weightFactors.length; i++) {
-            int digit = Character.getNumericValue(pesel.charAt(i));
-            weightedSum += digit * weightFactors[i];
+        for (int i = 0; i < WEIGHT_FACTORS.length; i++) {
+            final int digit = Character.getNumericValue(pesel.charAt(i));
+            weightedSum += digit * WEIGHT_FACTORS[i];
         }
-        int remainder = weightedSum % 10;
+        final int remainder = weightedSum % 10;
         return remainder == 0 ? 0 : (10 - remainder);
     }
 }
