@@ -1,5 +1,6 @@
 package pl.kielce.tu.fudala.lab01.banking.persistence;
 
+import org.springframework.stereotype.Component;
 import pl.kielce.tu.fudala.lab01.banking.serialization.IJsonMapper;
 
 import java.io.IOException;
@@ -7,6 +8,7 @@ import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 
+@Component
 public class FileStorage implements IFileStorage {
 
     private final IJsonMapper jsonMapper;
