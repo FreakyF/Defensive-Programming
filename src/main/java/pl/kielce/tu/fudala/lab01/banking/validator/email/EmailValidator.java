@@ -4,13 +4,13 @@ import jakarta.validation.ConstraintValidator;
 import jakarta.validation.ConstraintValidatorContext;
 
 public class EmailValidator implements ConstraintValidator<ValidEmail, String> {
-	private static final String EMAIL_PATTERN = "^s\\d{5}@student\\.tu\\.kielce\\.pl$";
+    private static final String EMAIL_PATTERN = "^s\\d{5}@student\\.tu\\.kielce\\.pl$";
 
-	@Override
-	public boolean isValid(String email, ConstraintValidatorContext context) {
-		if (email == null) {
-			return false;
-		}
-		return email.matches(EMAIL_PATTERN);
-	}
+    @Override
+    public boolean isValid(String email, ConstraintValidatorContext context) {
+        if (email == null) {
+            return false;
+        }
+        return email.matches(EMAIL_PATTERN);
+    }
 }

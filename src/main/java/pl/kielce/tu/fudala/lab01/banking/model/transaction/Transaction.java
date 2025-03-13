@@ -9,29 +9,29 @@ import java.time.LocalDateTime;
 import java.util.UUID;
 
 public class Transaction {
-	@NotNull
-	private UUID transactionId;
+    @NotNull
+    private final UUID transactionId;
 
-	@NotNull
-	private OperationType operationType;
+    @NotNull
+    private final OperationType operationType;
 
-	@NotNull
-	@Positive
-	private BigDecimal amount;
+    @NotNull
+    @Positive
+    private final BigDecimal amount;
 
-	@NotNull
-	private LocalDateTime dateTimeOfTransaction;
+    @NotNull
+    private final LocalDateTime dateTimeOfTransaction;
 
-	@Size(max = 255)
-	private String description;
+    @Size(max = 255)
+    private final String description;
 
-	public Transaction(OperationType operationType,
-	                   BigDecimal amount,
-	                   String description) {
-		this.transactionId = UUID.randomUUID();
-		this.operationType = operationType;
-		this.amount = amount;
-		this.dateTimeOfTransaction = LocalDateTime.now();
-		this.description = description;
-	}
+    public Transaction(OperationType operationType,
+                       BigDecimal amount,
+                       String description) {
+        this.transactionId = UUID.randomUUID();
+        this.operationType = operationType;
+        this.amount = amount;
+        this.dateTimeOfTransaction = LocalDateTime.now();
+        this.description = description;
+    }
 }

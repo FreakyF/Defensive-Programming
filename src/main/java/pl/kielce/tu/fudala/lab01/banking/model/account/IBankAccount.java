@@ -6,11 +6,11 @@ import java.math.BigDecimal;
 import java.util.List;
 
 public interface IBankAccount {
-	void deposit(BigDecimal amount);
+    void deposit(BigDecimal amount);
 
-	void withdraw(BigDecimal amount);
+    void withdraw(BigDecimal amount);
 
-	void transfer(IBankAccount targetAccount, BigDecimal amount);
+    void transfer(IBankAccount targetAccount, BigDecimal amount);
 
-	List<Transaction> getTransactionHistory();
+    List<Transaction> getTransactionHistory();
 }
