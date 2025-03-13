@@ -1,4 +1,4 @@
-﻿package pl.kielce.tu.fudala.lab01.banking.validator.email;
+package pl.kielce.tu.fudala.lab01.banking.validator.email;
 
 import jakarta.validation.ConstraintValidator;
 import jakarta.validation.ConstraintValidatorContext;

@@ -1,4 +1,4 @@
-﻿package pl.kielce.tu.fudala.lab01.banking.persistence;
+package pl.kielce.tu.fudala.lab01.banking.persistence;
 
 import pl.kielce.tu.fudala.lab01.banking.serialization.IJsonMapper;
 

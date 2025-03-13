@@ -1,4 +1,4 @@
-﻿package pl.kielce.tu.fudala.lab01.banking.model.account;
+package pl.kielce.tu.fudala.lab01.banking.model.account;
 
 import pl.kielce.tu.fudala.lab01.banking.model.transaction.Transaction;
 

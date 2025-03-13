@@ -1,4 +1,4 @@
-﻿package pl.kielce.tu.fudala.lab01.banking.serialization;
+package pl.kielce.tu.fudala.lab01.banking.serialization;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;

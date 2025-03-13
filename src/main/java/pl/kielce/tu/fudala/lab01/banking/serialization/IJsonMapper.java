@@ -1,4 +1,4 @@
-﻿package pl.kielce.tu.fudala.lab01.banking.serialization;
+package pl.kielce.tu.fudala.lab01.banking.serialization;
 
 public interface IJsonMapper {
     String toJson(Object object);

@@ -1,7 +1,8 @@
-﻿package pl.kielce.tu.fudala.lab01.banking.model.account;
+package pl.kielce.tu.fudala.lab01.banking.model.account;
 
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
+import lombok.Data;
 import pl.kielce.tu.fudala.lab01.banking.model.transaction.OperationType;
 import pl.kielce.tu.fudala.lab01.banking.model.transaction.Transaction;
 import pl.kielce.tu.fudala.lab01.banking.validator.email.ValidEmail;
@@ -16,6 +17,7 @@ import java.util.UUID;
 import java.util.concurrent.TimeUnit;
 import java.util.concurrent.locks.ReentrantLock;
 
+@Data
 public class BankAccount implements IBankAccount {
     private final ReentrantLock lock = new ReentrantLock();
     @NotNull
@@ -153,4 +155,6 @@ public class BankAccount implements IBankAccount {
         Transaction transaction = new Transaction(operationType, amount, description);
         transactionHistory.add(transaction);
     }
+
+
 }

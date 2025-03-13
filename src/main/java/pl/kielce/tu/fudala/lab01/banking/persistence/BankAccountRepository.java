@@ -1,4 +1,4 @@
-﻿package pl.kielce.tu.fudala.lab01.banking.persistence;
+package pl.kielce.tu.fudala.lab01.banking.persistence;
 
 import jakarta.annotation.PostConstruct;
 import org.springframework.stereotype.Repository;

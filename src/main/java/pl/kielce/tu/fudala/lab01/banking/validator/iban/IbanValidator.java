@@ -1,4 +1,4 @@
-﻿package pl.kielce.tu.fudala.lab01.banking.validator.iban;
+package pl.kielce.tu.fudala.lab01.banking.validator.iban;
 
 import jakarta.validation.ConstraintValidator;
 import jakarta.validation.ConstraintValidatorContext;

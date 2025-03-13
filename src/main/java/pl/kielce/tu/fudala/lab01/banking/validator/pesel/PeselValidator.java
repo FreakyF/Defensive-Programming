@@ -1,4 +1,4 @@
-﻿package pl.kielce.tu.fudala.lab01.banking.validator.pesel;
+package pl.kielce.tu.fudala.lab01.banking.validator.pesel;
 
 import jakarta.validation.ConstraintValidator;
 import jakarta.validation.ConstraintValidatorContext;

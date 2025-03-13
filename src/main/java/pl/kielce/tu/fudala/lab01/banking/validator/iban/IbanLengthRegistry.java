@@ -1,4 +1,4 @@
-﻿package pl.kielce.tu.fudala.lab01.banking.validator.iban;
+package pl.kielce.tu.fudala.lab01.banking.validator.iban;
 
 import java.util.Map;
 
