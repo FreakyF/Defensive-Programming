@@ -134,15 +134,6 @@ public class BankAccount implements IBankAccount {
         return email;
     }
 
-    private void validateTargetAccount(IBankAccount targetAccount) {
-        if (targetAccount == null) {
-            throw new IllegalArgumentException("Target account must not be null.");
-        }
-        if (this.equals(targetAccount)) {
-            throw new IllegalArgumentException("Cannot transfer funds to the same account.");
-        }
-    }
-
     private BankAccount castToBankAccount(IBankAccount account) {
         if (!(account instanceof BankAccount)) {
             throw new IllegalArgumentException("Target account must be a BankAccount instance.");
@@ -176,6 +167,15 @@ public class BankAccount implements IBankAccount {
         }
         if (amount.compareTo(BigDecimal.ZERO) <= 0) {
             throw new IllegalArgumentException(operationType + " amount must be greater than zero.");
+        }
+    }
+
+    private void validateTargetAccount(IBankAccount targetAccount) {
+        if (targetAccount == null) {
+            throw new IllegalArgumentException("Target account must not be null.");
+        }
+        if (this.equals(targetAccount)) {
+            throw new IllegalArgumentException("Cannot transfer funds to the same account.");
         }
     }
 
