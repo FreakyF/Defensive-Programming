@@ -1,7 +1,12 @@
 package pl.kielce.tu.fudala.lab01.banking.model.account;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
 import pl.kielce.tu.fudala.lab01.banking.model.transaction.OperationType;
 import pl.kielce.tu.fudala.lab01.banking.model.transaction.Transaction;
 import pl.kielce.tu.fudala.lab01.banking.validator.email.ValidEmail;
@@ -10,29 +15,40 @@ import pl.kielce.tu.fudala.lab01.banking.validator.pesel.ValidPesel;
 
 import java.math.BigDecimal;
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
 import java.util.UUID;
 import java.util.concurrent.TimeUnit;
 import java.util.concurrent.locks.ReentrantLock;
 
+@Data
+@NoArgsConstructor
+@AllArgsConstructor
 public class BankAccount implements IBankAccount {
+    @JsonIgnore
     private final ReentrantLock lock = new ReentrantLock();
+    @Getter
+    private final List<Transaction> transactionHistory = new ArrayList<>();
+    @Getter
     @NotNull
-    private UUID accountId;
+    private UUID accountId = UUID.randomUUID();
+    @Getter
     @NotBlank
     private String firstName;
+    @Getter
     @NotBlank
     private String lastName;
+    @Getter
     @ValidIban
     @NotBlank
     private String accountNumber;
+    @Getter
     @NotNull
     private BigDecimal balance = BigDecimal.ZERO;
-    private final List<Transaction> transactionHistory = new ArrayList<>();
+    @Getter
     @ValidPesel
     @NotBlank
     private String pesel;
+    @Getter
     @ValidEmail
     @NotBlank
     private String email;
@@ -94,46 +110,6 @@ public class BankAccount implements IBankAccount {
         }
     }
 
-    @Override
-    public List<Transaction> getTransactionHistory() {
-        return Collections.unmodifiableList(transactionHistory);
-    }
-
-    @Override
-    public UUID getAccountId() {
-        return accountId;
-    }
-
-    @Override
-    public String getFirstName() {
-        return firstName;
-    }
-
-    @Override
-    public String getLastName() {
-        return lastName;
-    }
-
-    @Override
-    public String getAccountNumber() {
-        return accountNumber;
-    }
-
-    @Override
-    public BigDecimal getBalance() {
-        return balance;
-    }
-
-    @Override
-    public String getPesel() {
-        return pesel;
-    }
-
-    @Override
-    public String getEmail() {
-        return email;
-    }
-
     private BankAccount castToBankAccount(IBankAccount account) {
         if (!(account instanceof BankAccount)) {
             throw new IllegalArgumentException("Target account must be a BankAccount instance.");
@@ -188,6 +164,4 @@ public class BankAccount implements IBankAccount {
         Transaction transaction = new Transaction(operationType, amount, description);
         transactionHistory.add(transaction);
     }
-
-
 }

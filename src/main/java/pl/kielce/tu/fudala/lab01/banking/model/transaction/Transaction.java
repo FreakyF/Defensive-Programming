@@ -3,27 +3,33 @@ package pl.kielce.tu.fudala.lab01.banking.model.transaction;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Positive;
 import jakarta.validation.constraints.Size;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
 import java.util.UUID;
 
-public class Transaction implements ITransaction {
+@Data
+@AllArgsConstructor
+@NoArgsConstructor
+public class Transaction {
     @NotNull
-    private final UUID transactionId;
+    private UUID transactionId;
 
     @NotNull
-    private final OperationType operationType;
+    private OperationType operationType;
 
     @NotNull
     @Positive
-    private final BigDecimal amount;
+    private BigDecimal amount;
 
     @NotNull
-    private final LocalDateTime dateTimeOfTransaction;
+    private LocalDateTime dateTimeOfTransaction;
 
     @Size(max = 255)
-    private final String description;
+    private String description;
 
     public Transaction(OperationType operationType, BigDecimal amount, String description) {
         this.transactionId = UUID.randomUUID();
@@ -31,30 +37,5 @@ public class Transaction implements ITransaction {
         this.amount = amount;
         this.dateTimeOfTransaction = LocalDateTime.now();
         this.description = description;
-    }
-
-    @Override
-    public UUID getTransactionId() {
-        return transactionId;
-    }
-
-    @Override
-    public OperationType getOperationType() {
-        return operationType;
-    }
-
-    @Override
-    public BigDecimal getAmount() {
-        return amount;
-    }
-
-    @Override
-    public LocalDateTime getDateTimeOfTransaction() {
-        return dateTimeOfTransaction;
-    }
-
-    @Override
-    public String getDescription() {
-        return description;
     }
 }

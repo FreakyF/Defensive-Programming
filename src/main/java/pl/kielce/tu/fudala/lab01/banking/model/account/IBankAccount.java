@@ -13,19 +13,19 @@ public interface IBankAccount {
 
     void transfer(IBankAccount targetAccount, BigDecimal amount);
 
+    UUID getAccountId();
+    String getFirstName();
+    String getLastName();
+    String getAccountNumber();
+    BigDecimal getBalance();
+    String getPesel();
+    String getEmail();
+
     List<Transaction> getTransactionHistory();
 
-    UUID getAccountId();
+    void setFirstName(String firstName);
 
-    String getFirstName();
+    void setLastName(String lastName);
 
-    String getLastName();
-
-    String getAccountNumber();
-
-    BigDecimal getBalance();
-
-    String getPesel();
-
-    String getEmail();
+    void setEmail(String email);
 }
