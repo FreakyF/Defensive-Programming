@@ -27,7 +27,10 @@
         <url/>
     </scm>
     <properties>
-        <java.version>23</java.version>
+        <java.version>21</java.version>
+        <sonar.projectKey>student92699_lab1_pd_fudala_16498a35-f6df-4c3c-9c28-2b620546262b</sonar.projectKey>
+        <sonar.projectName>LAB1_PD_FUDALA</sonar.projectName>
+        <sonar.qualitygate.wait>true</sonar.qualitygate.wait>
     </properties>
     <dependencies>
         <dependency>

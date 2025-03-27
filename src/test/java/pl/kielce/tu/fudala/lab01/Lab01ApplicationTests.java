@@ -8,6 +8,7 @@ class Lab01ApplicationTests {
 
 	@Test
 	void contextLoads() {
+		// Not yet implemented.
 	}
 
 }
