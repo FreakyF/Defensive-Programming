@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Banking Application</title>
+    <link rel="stylesheet" th:href="@{/css/styles.css}">
+</head>
+<body>
+<header>
+    <h1>Welcome to SecuBank</h1>
+</header>
+
+<nav>
+    <ul>
+        <li><a th:href="@{/}">Home</a></li>
+        <li><a th:href="@{/register}">Register</a></li>
+        <li><a th:href="@{/login}">Login</a></li>
+    </ul>
+</nav>
+
+<div class="container">
+    <!--/*@thymesVar id="successMessage" type="pl/"*/-->
+    <div th:if="${successMessage}" class="alert alert-success" th:text="${successMessage}"></div>
+    <!--/*@thymesVar id="errorMessage" type="pl"*/-->
+    <div th:if="${errorMessage}" class="alert alert-danger" th:text="${errorMessage}"></div>
+
+    <div class="card">
+        <h2>Your Financial Partner</h2>
+        <p>At Secure Trust Bank, we pride ourselves on our robust security measures and exceptional customer service. Our mission is to provide reliable and innovative financial solutions to help you succeed.</p>
+
+        <div class="center-buttons">
+            <a th:href="@{/register}" class="btn">Register</a>
+            <a th:href="@{/login}" class="btn">Login</a>
+        </div>
+    </div>
+</div>
+
+<footer>
+    <p>&copy; 2025 SecuBank. All rights reserved.</p>
+</footer>
+</body>
+</html>

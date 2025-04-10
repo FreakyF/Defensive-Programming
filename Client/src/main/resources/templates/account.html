@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Account Details - SecuBank</title>
+    <link rel="stylesheet" th:href="@{/css/styles.css}">
+</head>
+<body>
+<header>
+    <h1>Your SecuBank Account</h1>
+</header>
+
+<nav>
+    <ul>
+        <li><a th:href="@{/account}">Account</a></li>
+        <li><a th:href="@{/transfer}">Transfer</a></li>
+        <li><a th:href="@{/transactions}">Transactions</a></li>
+        <li><a th:href="@{/logout}">Logout</a></li>
+    </ul>
+</nav>
+
+<div class="container">
+    <!--/*@thymesVar id="successMessage" type="pl"*/-->
+    <div th:if="${successMessage}" class="alert alert-success" th:text="${successMessage}"></div>
+    <!--/*@thymesVar id="errorMessage" type="pl"*/-->
+    <div th:if="${errorMessage}" class="alert alert-danger" th:text="${errorMessage}"></div>
+
+    <div class="card">
+        <h2>Account Information</h2>
+        <table>
+            <tr>
+                <th>Name:</th>
+                <td th:text="${account.firstName + ' ' + account.lastName}"></td>
+            </tr>
+            <tr>
+                <th>Account Number:</th>
+                <td th:text="${account.accountNumber}"></td>
+            </tr>
+            <tr>
+                <th>PESEL:</th>
+                <td th:text="${account.pesel}"></td>
+            </tr>
+            <tr>
+                <th>Email:</th>
+                <td th:text="${account.email}"></td>
+            </tr>
+            <tr>
+                <th>Balance:</th>
+                <td th:text="${account.balance + ' PLN'}"
+                    th:class="${account.balance >= 0 ? 'balance-positive' : 'balance-negative'}"></td>
+            </tr>
+        </table>
+    </div>
+
+    <div class="card">
+        <div class="row">
+            <div class="col">
+                <h3>Deposit Funds</h3>
+                <form th:action="@{/deposit}" method="post">
+                    <div class="form-group">
+                        <label for="depositAmount">Amount:</label>
+                        <input type="number" id="depositAmount" name="amount" step="0.01" min="0.01" required>
+                    </div>
+                    <button type="submit" class="btn btn-success">Deposit</button>
+                </form>
+            </div>
+
+            <div class="col">
+                <h3>Withdraw Funds</h3>
+                <form th:action="@{/withdraw}" method="post">
+                    <div class="form-group">
+                        <label for="withdrawAmount">Amount:</label>
+                        <input type="number" id="withdrawAmount" name="amount" step="0.01" min="0.01" required>
+                    </div>
+                    <button type="submit" class="btn btn-danger">Withdraw</button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <div class="card">
+        <h3>Recent Transactions</h3>
+        <table th:if="${not #lists.isEmpty(account.transactionHistory)}">
+            <thead>
+            <tr>
+                <th>Type</th>
+                <th>Amount</th>
+                <th>Date</th>
+                <th>Description</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="transaction, stat : ${account.transactionHistory}" th:if="${stat.index < 5}">
+                <td th:text="${transaction.operationType}"></td>
+                <td th:text="${transaction.amount + ' PLN'}"></td>
+                <td th:text="${#temporals.format(transaction.dateTimeOfTransaction, 'yyyy-MM-dd HH:mm')}"></td>
+                <td th:text="${transaction.description}"></td>
+            </tr>
+            </tbody>
+        </table>
+        <p th:if="${#lists.isEmpty(account.transactionHistory)}">No transaction history available.</p>
+        <a th:href="@{/transactions}" class="btn">View All Transactions</a>
+    </div>
+</div>
+
+<footer>
+    <p>&copy; 2025 SecuBank. All rights reserved.</p>
+</footer>
+</body>
+</html>

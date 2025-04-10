@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Transaction History - SecuBank</title>
+  <link rel="stylesheet" th:href="@{/css/styles.css}">
+</head>
+<body>
+<header>
+  <h1>Transaction History</h1>
+</header>
+
+<nav>
+  <ul>
+    <li><a th:href="@{/account}">Account</a></li>
+    <li><a th:href="@{/transfer}">Transfer</a></li>
+    <li><a th:href="@{/transactions}">Transactions</a></li>
+    <li><a th:href="@{/logout}">Logout</a></li>
+  </ul>
+</nav>
+
+<div class="container">
+  <div class="card">
+    <h2>Your Transaction History</h2>
+
+    <table th:if="${not #lists.isEmpty(transactions)}">
+      <thead>
+      <tr>
+        <th>Type</th>
+        <th>Amount</th>
+        <th>Date</th>
+        <th>Description</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr th:each="transaction : ${transactions}">
+        <td th:text="${transaction.operationType}"></td>
+        <td th:text="${transaction.amount + ' PLN'}"></td>
+        <td th:text="${#temporals.format(transaction.dateTimeOfTransaction, 'yyyy-MM-dd HH:mm')}"></td>
+        <td th:text="${transaction.description}"></td>
+      </tr>
+      </tbody>
+    </table>
+
+    <p th:if="${#lists.isEmpty(transactions)}">No transaction history available.</p>
+
+    <a th:href="@{/account}" class="btn">Back to Account</a>
+  </div>
+</div>
+
+<footer>
+  <p>&copy; 2025 SecuBank. All rights reserved.</p>
+</footer>
+</body>
+</html>

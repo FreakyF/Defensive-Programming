@@ -1,0 +1,276 @@
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+
+html {
+
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    background-color: #f2f2f7;
+    color: #1c1c1e;
+    line-height: 1.6;
+    font-size: 1rem;
+    padding: 1rem;
+}
+
+
+header, footer {
+    background-color: #ffffff;
+    text-align: center;
+    padding: 1.5rem 1rem;
+    box-shadow: 0 0.25rem 0.75rem rgba(0, 0, 0, 0.1);
+    margin-bottom: 1rem;
+    border-radius: 0.75rem;
+}
+
+header h1,
+footer p {
+    margin: 0;
+    font-weight: 600;
+}
+
+
+nav {
+    background-color: #ffffff;
+    padding: 1rem 0;
+    box-shadow: 0 0.25rem 0.75rem rgba(0, 0, 0, 0.08);
+    margin: 1rem 0;
+}
+
+nav ul {
+    display: flex;
+    justify-content: center;
+    list-style: none;
+}
+
+nav ul li {
+    margin: 0 1rem;
+}
+
+nav ul li a {
+    text-decoration: none;
+
+    font-weight: 500;
+    transition: color 0.3s;
+}
+
+nav ul li a:hover {
+    color: #005bb5;
+}
+
+@media (min-width: 48rem) {
+    body {
+        display: grid;
+
+        grid-template-areas:
+      "header header"
+      "nav container"
+      "footer footer";
+        grid-template-columns: 15rem 1fr;
+        grid-template-rows: auto 1fr auto;
+
+
+        gap: 1rem;
+
+
+        min-height: 100vh;
+
+        padding: 1rem;
+    }
+
+    header {
+        grid-area: header;
+
+        margin-bottom: 0;
+    }
+
+    nav {
+        grid-area: nav;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+
+
+        margin: 0;
+        padding: 2rem 1rem;
+        background-color: #ffffff;
+        box-shadow: 0 0.25rem 0.75rem rgba(0, 0, 0, 0.1);
+        border-radius: 0.75rem;
+    }
+
+    nav ul {
+        flex-direction: column;
+    }
+
+    nav ul li {
+        margin: 1rem 0;
+    }
+
+    .container {
+        grid-area: container;
+
+
+        margin: 0;
+        padding: 2rem;
+        background-color: #ffffff;
+        border-radius: 0.75rem;
+        box-shadow: 0 0.25rem 0.75rem rgba(0, 0, 0, 0.1);
+    }
+
+    footer {
+        grid-area: footer;
+        margin-top: 0;
+    }
+}
+
+
+.card {
+    background-color: #ffffff;
+    padding: 1.5rem;
+    margin-bottom: 1.5rem;
+    border-radius: 0.75rem;
+    box-shadow: 0 0.25rem 0.75rem rgba(0, 0, 0, 0.1);
+}
+
+
+.form-group {
+    margin-bottom: 1.25rem;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 0.5rem;
+    font-weight: 600;
+}
+
+.form-group input[type="text"],
+.form-group input[type="email"],
+.form-group input[type="number"] {
+    width: 100%;
+    padding: 0.75rem;
+    font-size: 1rem;
+    border: 0.0625rem solid #d1d1d6;
+    border-radius: 0.5rem;
+    background-color: #fefefe;
+}
+
+
+.btn {
+    display: inline-block;
+    text-decoration: none;
+    background-color: #0071e3;
+    color: #ffffff;
+    padding: 0.75rem 1.5rem;
+    border: none;
+    border-radius: 0.625rem;
+    cursor: pointer;
+    font-size: 1rem;
+    transition: background-color 0.3s, box-shadow 0.3s;
+    text-align: center;
+}
+
+.btn:hover {
+    background-color: #005bb5;
+    box-shadow: 0 0.25rem 0.75rem rgba(0, 0, 0, 0.15);
+}
+
+.btn-success {
+    background-color: #34c759;
+}
+
+.btn-success:hover {
+    background-color: #30b454;
+}
+
+.btn-danger {
+    background-color: #ff3b30;
+}
+
+.btn-danger:hover {
+    background-color: #e0352a;
+}
+
+.btn-secondary {
+    background-color: #8e8e93;
+}
+
+.btn-secondary:hover {
+    background-color: #757579;
+}
+
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 1rem 0;
+    font-size: 1rem;
+}
+
+table th,
+table td {
+    padding: 0.75rem;
+    text-align: left;
+    border-bottom: 0.0625rem solid #d1d1d6;
+}
+
+
+.error-message {
+    color: #ff3b30;
+    font-size: 0.875rem;
+    margin-top: 0.5rem;
+}
+
+
+.two-columns {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-gap: 1.5rem;
+}
+
+
+.center-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    margin-top: 1.5rem;
+}
+
+
+input:focus,
+button:focus,
+a:focus {
+    outline: none;
+    box-shadow: 0 0 0 0.125rem rgba(0, 113, 227, 0.3);
+}
+
+
+@media (max-width: 48rem) {
+    nav ul {
+        flex-direction: row;
+    }
+
+    nav ul li {
+        margin: 0 0.75rem;
+    }
+
+    body {
+        display: block;
+        padding: 1rem;
+    }
+
+    nav {
+        box-shadow: 0 0.25rem 0.75rem rgba(0, 0, 0, 0.08);
+        margin: 1rem 0;
+    }
+
+    .container {
+        padding: 1rem;
+    }
+}

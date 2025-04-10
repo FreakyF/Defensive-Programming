@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Login - SecuBank</title>
+    <link rel="stylesheet" th:href="@{/css/styles.css}">
+</head>
+<body>
+<header>
+    <h1>Login to Your SecuBank Account</h1>
+</header>
+<nav>
+    <ul>
+        <li><a th:href="@{/}">Home</a></li>
+        <li><a th:href="@{/register}">Register</a></li>
+        <li><a th:href="@{/login}">Login</a></li>
+    </ul>
+</nav>
+<div class="container">
+    <!--/*@thymesVar id="successMessage" type="pl"*/-->
+    <div th:if="${successMessage}" class="alert alert-success" th:text="${successMessage}"></div>
+    <!--/*@thymesVar id="errorMessage" type="pl"*/-->
+    <div th:if="${errorMessage}" class="alert alert-danger" th:text="${errorMessage}"></div>
+    <div class="card">
+        <h2>Login</h2>
+        <form th:action="@{/login}" method="post">
+            <div class="form-group">
+                <label for="pesel">PESEL:</label>
+                <input type="text" id="pesel" name="pesel" required>
+            </div>
+            <button type="submit" class="btn">Login</button>
+        </form>
+        <p>Don't have an account? <a th:href="@{/register}">Register here</a></p>
+    </div>
+</div>
+<footer>
+    <p>&copy; 2025 SecuBank. All rights reserved.</p>
+</footer>
+</body>
+</html>
