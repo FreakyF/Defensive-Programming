@@ -8,13 +8,13 @@ import lombok.Data;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
+import pl.kielce.tu.fudala.banking.validator.email.ValidEmail;
+import pl.kielce.tu.fudala.banking.validator.iban.ValidIban;
+import pl.kielce.tu.fudala.banking.validator.pesel.ValidPesel;
 import pl.kielce.tu.fudala.server.banking.exception.InsufficientFundsException;
 import pl.kielce.tu.fudala.server.banking.exception.InvalidTransactionException;
-import pl.kielce.tu.fudala.server.banking.validator.pesel.ValidPesel;
 import pl.kielce.tu.fudala.server.banking.model.transaction.OperationType;
 import pl.kielce.tu.fudala.server.banking.model.transaction.Transaction;
-import pl.kielce.tu.fudala.server.banking.validator.email.ValidEmail;
-import pl.kielce.tu.fudala.server.banking.validator.iban.ValidIban;
 
 import java.math.BigDecimal;
 import java.util.ArrayList;

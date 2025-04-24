@@ -1,0 +1,8 @@
+pl\kielce\tu\fudala\banking\validator\email\EmailValidator.class
+pl\kielce\tu\fudala\banking\validator\iban\ValidIban.class
+pl\kielce\tu\fudala\banking\validator\iban\IbanLengthRegistry.class
+pl\kielce\tu\fudala\banking\validator\iban\IbanValidator.class
+pl\kielce\tu\fudala\banking\validator\pesel\ValidPesel.class
+pl\kielce\tu\fudala\banking\validator\email\ValidEmail.class
+pl\kielce\tu\fudala\banking\validator\pesel\PeselValidator.class
+pl\kielce\tu\fudala\Main.class

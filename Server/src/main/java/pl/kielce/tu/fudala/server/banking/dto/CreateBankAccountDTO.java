@@ -3,9 +3,9 @@ package pl.kielce.tu.fudala.server.banking.dto;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 import lombok.Data;
-import pl.kielce.tu.fudala.server.banking.validator.pesel.ValidPesel;
-import pl.kielce.tu.fudala.server.banking.validator.email.ValidEmail;
-import pl.kielce.tu.fudala.server.banking.validator.iban.ValidIban;
+import pl.kielce.tu.fudala.banking.validator.email.ValidEmail;
+import pl.kielce.tu.fudala.banking.validator.iban.ValidIban;
+import pl.kielce.tu.fudala.banking.validator.pesel.ValidPesel;
 
 import java.math.BigDecimal;
 

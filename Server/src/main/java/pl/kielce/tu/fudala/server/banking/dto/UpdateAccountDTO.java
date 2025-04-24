@@ -1,7 +1,7 @@
 package pl.kielce.tu.fudala.server.banking.dto;
 
 import lombok.Data;
-import pl.kielce.tu.fudala.server.banking.validator.email.ValidEmail;
+import pl.kielce.tu.fudala.banking.validator.email.ValidEmail;
 
 @Data
 public class UpdateAccountDTO {

@@ -177,7 +177,7 @@ public class BankAccountRepository implements IBankAccountRepository {
         try {
             BankAccount account = fileStorage.load(path.toString(), BankAccount.class);
             accounts.put(account.getPesel(), account);
-        } catch (FileOperationException | IOException e) {
+        } catch (FileOperationException e) {
             LOGGER.log(Level.SEVERE, "Error reading account file \"{0}\": {1}", new Object[]{path, e.getMessage()});
         }
     }
@@ -186,7 +186,7 @@ public class BankAccountRepository implements IBankAccountRepository {
         Path filePath = Paths.get(DATA_DIRECTORY, account.getPesel() + FILE_EXTENSION);
         try {
             fileStorage.save(filePath.toString(), account);
-        } catch (FileOperationException | IOException e) {
+        } catch (FileOperationException e) {
             LOGGER.log(Level.SEVERE, "Error saving account \"{0}\": {1}", new Object[]{account.getPesel(), e.getMessage()});
         }
     }
